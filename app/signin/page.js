@@ -22,11 +22,21 @@ export default function SignIn() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSignIn(e);  // Trigger sign-in on pressing Enter
+    }
+  };
+
+  const handleBack = () => {
+    router.back();  // Navigate to the previous page
+  };
+
   const containerStyle = {
     padding: '50px',
     textAlign: 'center',
     backgroundColor: '#000000', // Black background
-    color: '#FFA500', // Text color
+    color: '#FDDA0D', // Text color
     height: '100vh',
   };
 
@@ -37,19 +47,24 @@ export default function SignIn() {
     marginBottom: '10px',
     backgroundColor: '#2C2C2C',
     border: 'none',
-    color: '#FFA500',
+    color: '#FDDA0D',
     borderRadius: '5px',
   };
 
   const buttonStyle = {
     padding: '10px 20px',
     fontSize: '16px',
-    backgroundColor: '#FFA500',
+    backgroundColor: '#FDDA0D',
     color: '#2C2C2C',
     border: 'none',
     cursor: 'pointer',
     borderRadius: '5px',
     marginTop: '10px',
+  };
+
+  const backButtonStyle = {
+    ...buttonStyle,  // Same styling as the other buttons
+    marginRight: '0px',  // Space between buttons
   };
 
   const errorStyle = {
@@ -58,10 +73,10 @@ export default function SignIn() {
   };
 
   const imageStyle = {
-    width: '150px', // Adjust the width of the image
+    width: '550px', // Adjust the width of the image
     height: '150px',
     objectFit: 'cover',
-    borderRadius: '50%', // To make it circular
+    borderRadius: '0%', // Rectangular shape
     marginBottom: '20px',
   };
 
@@ -69,11 +84,13 @@ export default function SignIn() {
     <div style={containerStyle}>
       {/* Add a photo before the sign-in form */}
       <img
-        src="./assets/abhikalpanaLogo2.jpg" // Update the image path accordingly
+        src="/abhikalpanaLogo2.jpg" // Update the image path accordingly
         alt="Admin Login"
         style={imageStyle}
       />
+      <br></br>
       <h1>Admin Sign In</h1>
+      <br></br>
       {error && <p style={errorStyle}>{error}</p>}
       <form onSubmit={handleSignIn}>
         <div>
@@ -84,6 +101,7 @@ export default function SignIn() {
             onChange={(e) => setEmail(e.target.value)}
             required
             style={inputStyle}
+            onKeyDown={handleKeyPress}  // Add keypress event listener for "Enter"
           />
         </div>
         <div>
@@ -94,10 +112,15 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
             required
             style={inputStyle}
+            onKeyDown={handleKeyPress}  // Add keypress event listener for "Enter"
           />
         </div>
         <button type="submit" style={buttonStyle}>
           Sign In
+        </button>
+        <br></br>
+        <button type="button" onClick={handleBack} style={backButtonStyle}>
+          Back
         </button>
       </form>
     </div>

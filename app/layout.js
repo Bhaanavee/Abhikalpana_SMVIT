@@ -29,5 +29,5 @@ export default function RootLayout({ children }) {
 
 
 /*color scheme to 
-#FFA500
+##FDDA0D
 black and #2C2C2C. */

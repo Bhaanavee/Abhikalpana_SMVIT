@@ -51,7 +51,7 @@ export default function FetchAttendance() {
 
   const buttonStyle = {
     padding: '10px 20px',
-    backgroundColor: isFetching ? '#FFC107' : '#FFA500', // Change color when fetching
+    backgroundColor: isFetching ? '#FFC107' : '#FDDA0D', // Change color when fetching
     color: '#000000',
     border: 'none',
     borderRadius: '5px',
@@ -61,10 +61,10 @@ export default function FetchAttendance() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', backgroundColor: '#000000', color: '#FFA500' }}>
+    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', backgroundColor: '#000000', color: '#FDDA0D' }}>
       <button
         onClick={handleBack}
-        style={{ padding: '10px', backgroundColor: '#2C2C2C', color: '#FFA500', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}
+        style={{ padding: '10px', backgroundColor: '#2C2C2C', color: '#FDDA0D', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}
       >
         Back
       </button>
@@ -77,7 +77,7 @@ export default function FetchAttendance() {
         value={usn}
         onChange={(e) => setUsn(e.target.value)}
         onKeyDown={handleKeyDown}
-        style={{ padding: '10px', borderRadius: '5px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FFA500', marginBottom: '10px' }}
+        style={{ padding: '10px', borderRadius: '5px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FDDA0D', marginBottom: '10px' }}
       />
       <br />
       <button

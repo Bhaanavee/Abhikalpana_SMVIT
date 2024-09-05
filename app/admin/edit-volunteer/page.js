@@ -96,13 +96,13 @@ export default function EditVolunteer() {
     maxWidth: '600px',
     margin: 'auto',
     backgroundColor: '#000000', // Black background
-    color: '#FFA500', // Text color
+    color: '#FDDA0D', // Text color
   };
 
   const buttonStyle = {
     padding: '10px 20px',
     backgroundColor: '#2C2C2C', // Button background
-    color: '#FFA500', // Button text color
+    color: '#FDDA0D', // Button text color
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
@@ -115,7 +115,7 @@ export default function EditVolunteer() {
     borderRadius: '5px',
     border: '1px solid #2C2C2C',
     backgroundColor: '#2C2C2C',
-    color: '#FFA500',
+    color: '#FDDA0D',
     marginBottom: '10px',
     width: '100%',
   };
@@ -189,7 +189,7 @@ export default function EditVolunteer() {
       <h2>Current Volunteers</h2>
       
       {volunteers.length > 0 ? (
-        <ul style={{ listStyleType: 'none', padding: '0', color: '#FFA500' }}>
+        <ul style={{ listStyleType: 'none', padding: '0', color: '#FDDA0D' }}>
           {volunteers.map((volunteer, index) => (
 
             <li key={index} style={{ marginBottom: '10px' }}>
@@ -199,7 +199,7 @@ export default function EditVolunteer() {
           ))}
         </ul>
       ) : (
-        <p style={{ color: '#FFA500' }}>No volunteers found.</p>
+        <p style={{ color: '#DDD' }}>No volunteers found.</p>
       )}
     </div>
   );

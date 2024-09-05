@@ -40,10 +40,10 @@ export default function UpdateVolunteer() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', backgroundColor: '#000000', color: '#FFA500' }}>
+    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', backgroundColor: '#000000', color: '#FDDA0D' }}>
       <button
         onClick={handleBack}
-        style={{ padding: '10px', backgroundColor: '#2C2C2C', color: '#FFA500', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}
+        style={{ padding: '10px', backgroundColor: '#2C2C2C', color: '#FDDA0D', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}
       >
         Back
       </button>
@@ -65,7 +65,7 @@ export default function UpdateVolunteer() {
             value={usn}
             onChange={(e) => setUsn(e.target.value)}
             required
-            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FFA500' }}
+            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FDDA0D' }}
           />
         </label>
         <br></br>
@@ -77,7 +77,7 @@ export default function UpdateVolunteer() {
             value={hours}
             onChange={(e) => setHours(e.target.value)}
             required
-            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FFA500' }}
+            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FDDA0D' }}
           />
         </label>
 
@@ -89,7 +89,7 @@ export default function UpdateVolunteer() {
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
-            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FFA500' }}
+            style={{ padding: '8px', borderRadius: '4px', border: '1px solid #2C2C2C', backgroundColor: '#2C2C2C', color: '#FDDA0D' }}
           />
         </label>
         <br></br>
@@ -105,13 +105,13 @@ export default function UpdateVolunteer() {
         <br></br>
         <button
           type="submit"
-          style={{ padding: '10px 20px', backgroundColor: '#FFA500', color: '#000000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+          style={{ padding: '10px 20px', backgroundColor: '#FDDA0D', color: '#000000', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
         >
           Update Attendance
         </button>
       </form>
-      {message && <p style={{ color: '#00FF00' }}>{message}</p>}
-      {error && <p style={{ color: '#FF0000' }}>{error}</p>}
+      {message && <p style={{ color: '#FDDA0D' }}>{message}</p>}
+      {error && <p style={{ color: '#FDDA0D' }}>{error}</p>}
     </div>
   );
 }

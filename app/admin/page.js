@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'; // For navigation
 import { useState } from 'react';
-import { FaUserEdit, FaCalendarCheck, FaUserPlus, FaArrowLeft } from 'react-icons/fa'; // Icons
+import { FaUserEdit, FaCalendarCheck, FaUserPlus, FaHome } from 'react-icons/fa'; // Icons
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -17,39 +17,51 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleGoBack = () => {
-    router.back();
+  const handleHome = () => {
+    router.push('/'); // Navigate to the home page
   };
 
   const headerStyle = {
     backgroundColor: '#2C2C2C',
-    color: '#FFA500',
+    color: '#FDDA0D',
     padding: '10px 20px',
     display: 'flex',
     alignItems: 'center',
     boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
     marginBottom: '20px',
+    position: 'relative',
   };
 
-  const backButtonStyle = {
-    backgroundColor: 'transparent',
+  const homeButtonStyle = {
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    backgroundColor: '#2C2C2C',
+    color: '#FDDA0D',
     border: 'none',
-    color: '#FFA500',
-    fontSize: '20px',
+    borderRadius: '5px',
+    padding: '10px 20px',
     cursor: 'pointer',
+    fontSize: '16px',
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
+    transition: 'background-color 0.3s, color 0.3s',
+  };
+
+  const homeButtonHoverStyle = {
+    backgroundColor: '#FFA500',
+    color: '#2C2C2C',
   };
 
   const cardStyle = {
     backgroundColor: '#2C2C2C',
-    border: '1px solid #FFA500',
+    border: '1px solid #FDDA0D',
     borderRadius: '8px',
     padding: '20px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
     marginBottom: '20px',
-    color: '#FFA500',
+    color: '#FDDA0D',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -59,7 +71,7 @@ export default function AdminDashboard() {
   const buttonStyle = {
     padding: '15px',
     backgroundColor: '#2C2C2C',
-    color: '#FFA500',
+    color: '#FDDA0D',
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
@@ -75,24 +87,24 @@ export default function AdminDashboard() {
     color: '#FF0000',
     marginBottom: '20px',
   };
-  
-  const handleBack = () => {
-    router.back();
-  };
 
   return (
-    <div style={{ backgroundColor: '#000000', color: '#FFA500', minHeight: '100vh', padding: '20px', maxWidth: '800px', margin: 'auto' }}>
-      <button
-        onClick={handleBack}
-        style={{ padding: '10px', backgroundColor: '#2C2C2C', color: '#FFA500', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}
-      >
-        Back
-      </button>
+    <div style={{ backgroundColor: '#000000', color: '#FDDA0D', minHeight: '100vh', padding: '20px', maxWidth: '800px', margin: 'auto' }}>
+      <br></br>
+        <button
+          onClick={handleHome}
+          style={homeButtonStyle}
+          onMouseOver={(e) => e.currentTarget.style = { ...homeButtonStyle, ...homeButtonHoverStyle }}
+          onMouseOut={(e) => e.currentTarget.style = homeButtonStyle}
+        >
+          <FaHome />
+          Home
+        </button>
+      
       <br></br>
       <h1>Admin Dashboard</h1>
       <br></br>
       <p>Select an option below to manage volunteer records and credentials:</p>
-      <br></br>
       {error && <p style={errorStyle}>{error}</p>}
       <div>
         <div
