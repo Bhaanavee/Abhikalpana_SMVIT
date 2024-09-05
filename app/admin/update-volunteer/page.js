@@ -110,6 +110,7 @@ export default function UpdateVolunteer() {
           Update Attendance
         </button>
       </form>
+      <br></br>
       {message && <p style={{ color: '#FDDA0D' }}>{message}</p>}
       {error && <p style={{ color: '#FDDA0D' }}>{error}</p>}
     </div>
