@@ -26,3 +26,8 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+
+/*color scheme to 
+#FFA500
+black and #2C2C2C. */
