@@ -30,7 +30,19 @@ export default function EditVolunteer() {
     return () => unsubscribe();
   }, []);
 
+  const checkIfVolunteerExists = async (usn) => {
+    const volunteerQuery = query(collection(db, "volunteers"), where("usn", "==", usn));
+    const querySnapshot = await getDocs(volunteerQuery);
+    return !querySnapshot.empty;
+  };
+
   const handleAddVolunteer = async () => {
+    if (await checkIfVolunteerExists(usn)) {
+      setError('Volunteer with this USN already exists.');
+      setMessage('');
+      return;
+    }
+
     try {
       await addDoc(collection(db, "volunteers"), {
         usn: usn,
@@ -50,22 +62,29 @@ export default function EditVolunteer() {
       return;
     }
 
+    if (!(await checkIfVolunteerExists(usn))) {
+      setError('Volunteer with the specified USN does not exist.');
+      return;
+    }
+
     try {
-      // Locate the volunteer document by USN
-      const volunteerQuery = query(collection(db, "volunteers"), where("usn", "==", usn));
-      const querySnapshot = await getDocs(volunteerQuery);
+      // Delete attendance records first
+      const attendanceQuery = query(collection(db, "attendance"), where("usn", "==", usn));
+      const attendanceSnapshot = await getDocs(attendanceQuery);
 
-      if (querySnapshot.empty) {
-        setError('Volunteer with the specified USN does not exist.');
-        return;
-      }
-
-      // Delete each document found with the specified USN
-      querySnapshot.forEach(async (doc) => {
+      attendanceSnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
       });
 
-      setMessage('Volunteer deleted successfully.');
+      // Delete volunteer documents
+      const volunteerQuery = query(collection(db, "volunteers"), where("usn", "==", usn));
+      const volunteerSnapshot = await getDocs(volunteerQuery);
+
+      volunteerSnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      setMessage('Volunteer and their attendance records deleted successfully.');
       setError('');
     } catch (e) {
       setError('Error deleting volunteer. Please try again.');
@@ -186,21 +205,6 @@ export default function EditVolunteer() {
       <br></br>
       {error && <p style={errorStyle}>{error}</p>}
       <br></br>
-      <h2>Current Volunteers</h2>
-      
-      {volunteers.length > 0 ? (
-        <ul style={{ listStyleType: 'none', padding: '0', color: '#FDDA0D' }}>
-          {volunteers.map((volunteer, index) => (
-
-            <li key={index} style={{ marginBottom: '10px' }}>
-              <br></br>
-              USN: {volunteer.usn} - Name: {volunteer.name}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p style={{ color: '#DDD' }}>No volunteers found.</p>
-      )}
     </div>
   );
 }

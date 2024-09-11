@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'; // For navigation
 import { useState } from 'react';
-import { FaUserEdit, FaCalendarCheck, FaUserPlus, FaHome } from 'react-icons/fa'; // Icons
+import { FaUserEdit, FaCalendarCheck, FaUserPlus, FaHome, FaUsers } from 'react-icons/fa'; // Icons
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -91,16 +91,15 @@ export default function AdminDashboard() {
   return (
     <div style={{ backgroundColor: '#000000', color: '#FDDA0D', minHeight: '100vh', padding: '20px', maxWidth: '800px', margin: 'auto' }}>
       <br></br>
-        <button
-          onClick={handleHome}
-          style={homeButtonStyle}
-          onMouseOver={(e) => e.currentTarget.style = { ...homeButtonStyle, ...homeButtonHoverStyle }}
-          onMouseOut={(e) => e.currentTarget.style = homeButtonStyle}
-        >
-          <FaHome />
-          Home
-        </button>
-      
+      <button
+        onClick={handleHome}
+        style={homeButtonStyle}
+        onMouseOver={(e) => e.currentTarget.style = { ...homeButtonStyle, ...homeButtonHoverStyle }}
+        onMouseOut={(e) => e.currentTarget.style = homeButtonStyle}
+      >
+        <FaHome />
+        Home
+      </button>
       <br></br>
       <h1>Admin Dashboard</h1>
       <br></br>
@@ -141,6 +140,18 @@ export default function AdminDashboard() {
           >
             <FaUserPlus size={24} />
             Edit Volunteer Credentials
+          </button>
+        </div>
+        <div
+          style={cardStyle}
+          onClick={() => handleNavigation('view-volunteers')}
+        >
+          <button
+            style={buttonStyle}
+            aria-label="View Volunteers"
+          >
+            <FaUsers size={24} />
+            View Volunteers
           </button>
         </div>
       </div>
